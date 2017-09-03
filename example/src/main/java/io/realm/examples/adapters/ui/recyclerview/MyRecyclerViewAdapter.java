@@ -98,7 +98,7 @@ class MyRecyclerViewAdapter extends RealmRecyclerViewAdapter<Counter, MyRecycler
 
         MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.textview);
+            title = (TextView) view.findViewById(R.id.todo_title_text_view);
             deletedCheckBox = (CheckBox) view.findViewById(R.id.checkBox);
         }
     }

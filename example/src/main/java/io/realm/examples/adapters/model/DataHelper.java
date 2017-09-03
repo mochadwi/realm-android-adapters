@@ -34,6 +34,15 @@ public class DataHelper {
         });
     }
 
+    public static void editItemAsync(Realm realm) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+            }
+        });
+    }
+
     public static void addItemAsync(Realm realm) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override

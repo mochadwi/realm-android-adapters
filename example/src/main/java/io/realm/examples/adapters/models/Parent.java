@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.realm.examples.adapters.model;
+package io.realm.examples.adapters.models;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -21,9 +21,9 @@ import io.realm.RealmObject;
 
 public class Parent extends RealmObject {
     @SuppressWarnings("unused")
-    private RealmList<Counter> counterList;
+    private RealmList<Todo> todoList;
 
-    public RealmList<Counter> getCounterList() {
-        return counterList;
+    public RealmList<Todo> getTodoList() {
+        return todoList;
     }
 }

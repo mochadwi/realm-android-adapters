@@ -11,9 +11,6 @@
               android:icon="@android:drawable/ic_menu_delete"
               android:title="@string/start_delete"
               app:showAsAction="ifRoom"/>
-        <item android:id="@+id/action_random"
-              android:title="@string/add_random"
-              app:showAsAction="ifRoom|withText"/>
     </group>
     <group android:id="@+id/group_delete_mode">
         <item android:id="@+id/action_end_delete_mode"

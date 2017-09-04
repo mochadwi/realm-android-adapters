@@ -22,8 +22,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import io.realm.examples.adapters.ui.listview.ListViewExampleActivity;
-import io.realm.examples.adapters.ui.recyclerview.RecyclerViewExampleActivity;
+import io.realm.examples.adapters.ui.todo.TodoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        setupButton(R.id.button_listview, ListViewExampleActivity.class);
-        setupButton(R.id.button_recyclerview, RecyclerViewExampleActivity.class);
+        setupButton(R.id.button_recyclerview, TodoActivity.class);
     }
 
     void startActivity(Class<? extends Activity> activityClass) {

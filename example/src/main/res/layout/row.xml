@@ -58,7 +58,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/todo_deadline_text_view"
+        android:id="@+id/todo_due_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

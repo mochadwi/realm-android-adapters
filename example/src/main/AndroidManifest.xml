@@ -18,10 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.listview.ListViewExampleActivity"
-            android:label="ListView Example"/>
-        <activity
-            android:name=".ui.recyclerview.RecyclerViewExampleActivity"
+            android:name=".ui.todo.TodoActivity"
             android:label="RecyclerView Example"/>
     </application>
 

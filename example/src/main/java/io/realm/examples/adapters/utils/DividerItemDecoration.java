@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.realm.examples.adapters.ui;
+package io.realm.examples.adapters.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;

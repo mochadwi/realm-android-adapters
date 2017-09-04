@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.realm.examples.adapters.ui.recyclerview;
+package io.realm.examples.adapters.ui.todo;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,14 +30,14 @@ import java.util.Set;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.examples.adapters.R;
-import io.realm.examples.adapters.model.Counter;
+import io.realm.examples.adapters.models.Todo;
 
-class MyRecyclerViewAdapter extends RealmRecyclerViewAdapter<Counter, MyRecyclerViewAdapter.MyViewHolder> {
+class TodoAdapter extends RealmRecyclerViewAdapter<Todo, TodoAdapter.MyViewHolder> {
 
     private boolean inDeletionMode = false;
-    private Set<Integer> countersToDelete = new HashSet<Integer>();
+    private Set<Integer> todosToDelete = new HashSet<Integer>();
 
-    MyRecyclerViewAdapter(OrderedRealmCollection<Counter> data) {
+    TodoAdapter(OrderedRealmCollection<Todo> data) {
         super(data, true);
         setHasStableIds(true);
     }
@@ -45,13 +45,13 @@ class MyRecyclerViewAdapter extends RealmRecyclerViewAdapter<Counter, MyRecycler
     void enableDeletionMode(boolean enabled) {
         inDeletionMode = enabled;
         if (!enabled) {
-            countersToDelete.clear();
+            todosToDelete.clear();
         }
         notifyDataSetChanged();
     }
 
-    Set<Integer> getCountersToDelete() {
-        return countersToDelete;
+    Set<Integer> getTodosToDelete() {
+        return todosToDelete;
     }
 
     @Override
@@ -63,19 +63,21 @@ class MyRecyclerViewAdapter extends RealmRecyclerViewAdapter<Counter, MyRecycler
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        final Counter obj = getItem(position);
+        final Todo obj = getItem(position);
         holder.data = obj;
         //noinspection ConstantConditions
-        holder.title.setText(obj.getCountString());
-        holder.deletedCheckBox.setChecked(countersToDelete.contains(obj.getCount()));
+        holder.title.setText(obj.getTitle());
+        holder.description.setText(obj.getDescription());
+        holder.due.setText(obj.getDue());
+        holder.deletedCheckBox.setChecked(todosToDelete.contains(obj.getId()));
         if (inDeletionMode) {
             holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        countersToDelete.add(obj.getCount());
+                        todosToDelete.add(obj.getId());
                     } else {
-                        countersToDelete.remove(obj.getCount());
+                        todosToDelete.remove(obj.getId());
                     }
                 }
             });
@@ -88,17 +90,21 @@ class MyRecyclerViewAdapter extends RealmRecyclerViewAdapter<Counter, MyRecycler
     @Override
     public long getItemId(int index) {
         //noinspection ConstantConditions
-        return getItem(index).getCount();
+        return getItem(index).getId();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title;
+        TextView description;
+        TextView due;
         CheckBox deletedCheckBox;
-        public Counter data;
+        public Todo data;
 
         MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.todo_title_text_view);
+            description = (TextView) view.findViewById(R.id.todo_description_text_view);
+            due = (TextView) view.findViewById(R.id.todo_due_text_view);
             deletedCheckBox = (CheckBox) view.findViewById(R.id.checkBox);
         }
     }
